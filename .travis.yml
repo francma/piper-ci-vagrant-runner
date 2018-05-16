@@ -23,7 +23,7 @@ jobs:
       sudo: required
       env: TOXENV=py,coveralls
       python: "3.5"
-      stage: LXD
+      stage: vagrant
       before_install:
         - sudo add-apt-repository --yes ppa:ubuntu-lxc/stable
         - sudo apt-get -qq update
