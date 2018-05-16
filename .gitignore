@@ -1,0 +1,11 @@
+/.idea
+__pycache__
+.cache
+.eggs
+.tox
+logging
+*.egg-info
+.mypy_cache
+.coverage
+.pytest_cache/
+.vagrant

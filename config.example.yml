@@ -1,0 +1,30 @@
+vagrant:
+  # where to look for vagrant files (/path/[vagrant_files_home]/ubuntu/Vagrantfile)
+  vagrant_files_home: /home/user/vagrant
+
+runner:
+  # runner identifier (see your piper-core config)
+  token: AAAA
+  # sleep at least for "x" second before making next request to your piper-core
+  interval: 1
+  # maximum number of concurrent jobs
+  instances: 1
+  # your piper-core address
+  endpoint: http://127.0.0.1:5001
+
+logging:
+  version: 1
+  disable_existing_loggers: yes
+  handlers:
+    console:
+      class: logging.StreamHandler
+      formatter: default
+      stream: ext://sys.stderr
+  formatters:
+    default:
+      format: "%(asctime)s - %(processName)s - %(levelname)s - %(message)s"
+      datefmt: '%Y-%m-%d %H:%M:%S'
+  loggers:
+    piper-vagrant:
+      level: DEBUG
+      handlers: [console]

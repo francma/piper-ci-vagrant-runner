@@ -1,0 +1,21 @@
+{
+  "commands": [
+    "echo $A",
+    "echo $B",
+    "pwd",
+    "mkdir test",
+    "cd test",
+    "pwd"
+  ],
+  "secret": "ok",
+  "env": {
+    "A": "I want to die",
+    "B": "Please"
+  },
+  "image": "ubuntu",
+  "repository": {
+    "origin": "https://github.com/francma/piper-ci-test-repo.git",
+    "branch": "master",
+    "commit": "e7a4739755a81a06242bc3249e36b133b3783f9b"
+  }
+}
