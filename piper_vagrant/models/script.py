@@ -43,16 +43,16 @@ class Script:
 
     def __enter__(self):
         vagrant_file_path = self._vagrant_config.vagrant_files_home.joinpath(self._job.image).joinpath('Vagrantfile')
-        shutil.copyfile(vagrant_file_path, self._tempdir.joinpath('Vagrantfile'))
-        self._vagrant.root = self._tempdir
-        self._vagrant.env = {**os.environ, **{'PIPER_REPOSITORY_PATH': self._repository_path}}
+        shutil.copyfile(str(vagrant_file_path), str(self._tempdir.joinpath('Vagrantfile')))
+        self._vagrant.root = str(self._tempdir)
+        self._vagrant.env = {**os.environ, **{'PIPER_REPOSITORY_PATH': str(self._repository_path)}}
         self._vagrant.up()
 
         command = self._job.script
         self._process = subprocess.Popen(
             ['vagrant', 'ssh', '--no-tty', '-c', command],
             stdout=subprocess.PIPE,
-            cwd=self._tempdir,
+            cwd=str(self._tempdir),
             env=self._vagrant.env,
         )
 
@@ -66,7 +66,7 @@ class Script:
                 raise e
 
         try:
-            shutil.rmtree(self._tempdir)
+            shutil.rmtree(str(self._tempdir))
         except Exception:
             pass  # ignore
 
