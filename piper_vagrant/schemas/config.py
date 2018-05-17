@@ -3,7 +3,12 @@ schema = {
   "mapping": {
     "vagrant": {
       "type": "map",
-      "allowempty": True,
+      "mapping": {
+        "vagrant_files_home": {
+          "type": "str",
+          "required": True
+        },
+      },
     },
     "runner": {
       "type": "map",
