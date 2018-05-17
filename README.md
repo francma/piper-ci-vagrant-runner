@@ -38,6 +38,16 @@ Runner for [piper-ci-core](https://github.com/francma/piper-ci-driver) using [Va
 
     `vim /config.example.yml`
 
+3. Go to `vagrant.vagrant_files_home` you defined in config and define images used in build
+
+	`cd [vagrant.vagrant_files_home] && mkdir ubuntu && cd ubuntu && vagrant init ubuntu/trusty64` 
+
+4. This will create Vagrantfile in `[vagrant.vagrant_files_home]/ubuntu` that will be available as `image: ubuntu` in `.piper.yml` build config file
+
+5. In order to have repository inside your vagrant box, you must add it as synced folder to your Vagrantfile (example in `/tests/vagrant-files/ubuntu/Vagrantfile`)
+
+	`config.vm.synced_folder ENV['PIPER_REPOSITORY_PATH'], "/piper"`
+
 ## Running
 
 `piper-vagrant [path to your config file]`
