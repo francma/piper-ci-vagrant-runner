@@ -57,7 +57,7 @@ def connection():
 def config():
     cfg = {
         'vagrant': {
-            'vagrant_files_home': Path(os.path.dirname(os.path.realpath(__file__))).joinpath('vagrant-files')
+            'vagrant_files_home': str(Path(os.path.dirname(os.path.realpath(__file__))).joinpath('vagrant-files'))
         },
         'runner': {
             'token': uuid.uuid4().hex,
